@@ -5,6 +5,7 @@ import math
 import PygameTWF
 import PygameCTBF
 import extraInfo
+
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -15,10 +16,6 @@ previousClick = False
 cyanTimer = 0
 run = True
 secondScreen = False
-Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Weapons","321 Challenge","No Open Doors","Box Roulette","Explosives Only","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Spawn Room"]
-Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuketown","Origins"]
-bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever","Equipment","Non-lethal Buildables","Lethal Buildables"]
-rangesList = [(95,145),(145,195),(195,245),(245,295),(295,345),(345,395),(395,445),(445,495)]
 
 clock = pygame.time.Clock()
 while run:
@@ -67,7 +64,7 @@ while run:
         while rectdraw2 > 0:
             pygame.draw.rect(window, (30,30,30), (10,50 + rectdraw2 * 50,35,35),5)
             rectdraw2 = rectdraw2 - 1
-        for index, amount in enumerate(bDescriptions):
+        for index, amount in enumerate(extraInfo.bDescriptions):
             bDRender = Type2.render(amount,True,(0,0,0))
             window.blit(bDRender, (50,100 + index * 50))
         pygame.draw.line(window, (0,0,0),(0,90),(360,90),5)
@@ -102,8 +99,8 @@ while run:
             pygame.draw.rect(window, (amount), (15,105 + index * 50,25,25))
 
         # Displaying the Map and Challenge
-        mapName = Type2.render(str(Map[mapNumber]), True, (0,0,0))
-        challengeName = Type2.render(str(Challenge[challengeNumber]),True, (0,0,0))
+        mapName = Type2.render(str(extraInfo.Map[mapNumber]), True, (0,0,0))
+        challengeName = Type2.render(str(extraInfo.Challenge[challengeNumber]),True, (0,0,0))
         window.blit(mapName, (10,10))
         window.blit(challengeName, (10,50))
 
@@ -113,7 +110,7 @@ while run:
     
         # Extra info on hover
         if pygame.mouse.get_pos()[0] < 435 and pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 505:
-            for x, y in rangesList:
+            for x, y in extraInfo.rangesList:
                 if int(x) <= pygame.mouse.get_pos()[1] < int(y):
                     displayExtraInfo = index
             PygameCTBF.cursorTextBox((extraInfo.extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
