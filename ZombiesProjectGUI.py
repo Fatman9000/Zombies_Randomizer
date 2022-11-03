@@ -4,6 +4,7 @@ import random
 import math
 import PygameTWF
 import PygameCTBF
+import extraInfo
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -17,19 +18,7 @@ secondScreen = False
 Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Weapons","321 Challenge","No Open Doors","Box Roulette","Explosives Only","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Spawn Room"]
 Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuketown","Origins"]
 bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever","Equipment","Non-lethal Buildables","Lethal Buildables"]
-rangesList = ["953g145","1453g195","1953g245","2453g295","2953g345","3453g395","3953g445","4453g495"]
-extraInfoDesc3 = open("ExtraInfoDescriptions.txt", "r")
-extraInfoDesc2 = extraInfoDesc3.read()
-extraInfoDesc = extraInfoDesc2.split("3g")
-extraInfoDesc3.close()
-cDescriptions3 = open("cDescriptions.txt", "r")
-cDescriptions2 = cDescriptions3.read()
-cDescriptions = cDescriptions2.split("3g")
-cDescriptions3.close()
-redGreen3 = open("redGreen.txt", "r")
-redGreen2 = redGreen3.read()
-redGreen = redGreen2.split("3g")
-redGreen3.close()
+rangesList = [(95,145),(145,195),(195,245),(245,295),(295,345),(345,395),(395,445),(445,495)]
 
 clock = pygame.time.Clock()
 while run:
@@ -105,11 +94,11 @@ while run:
             check = True
 
         # Challenge Descriptions
-        PygameTWF.renderTextWrap((cDescriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
+        PygameTWF.renderTextWrap((extraInfo.cDescriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
 
         #Red and Green Boxes 
-        redgreen7 = (redGreen[challengeNumber]).split("4g")
-        for index, amount in enumerate(redgreen7):
+        
+        for index, amount in enumerate(extraInfo.redGreen[challengeNumber]):
             pygame.draw.rect(window, (amount), (15,105 + index * 50,25,25))
 
         # Displaying the Map and Challenge
@@ -124,11 +113,10 @@ while run:
     
         # Extra info on hover
         if pygame.mouse.get_pos()[0] < 435 and pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 505:
-            for index, amount in enumerate(rangesList):
-                rangesList2 = amount.split("3g")
-                if int(rangesList2[0]) <= pygame.mouse.get_pos()[1] < int(rangesList2[1]):
+            for x, y in rangesList:
+                if int(x) <= pygame.mouse.get_pos()[1] < int(y):
                     displayExtraInfo = index
-            PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
+            PygameCTBF.cursorTextBox((extraInfo.extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
 
     previousClick = Click[0]
     pygame.display.flip()
