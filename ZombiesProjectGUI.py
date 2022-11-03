@@ -111,8 +111,8 @@ while run:
         # Extra info on hover
         if pygame.mouse.get_pos()[0] < 435 and pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 505:
             for x, y in extraInfo.rangesList:
-                if int(x) <= pygame.mouse.get_pos()[1] < int(y):
-                    displayExtraInfo = index
+                if x <= pygame.mouse.get_pos()[1] < y:
+                    displayExtraInfo = extraInfo.rangesList.index((x,y))
             PygameCTBF.cursorTextBox((extraInfo.extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
 
     previousClick = Click[0]
