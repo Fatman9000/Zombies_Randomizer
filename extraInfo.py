@@ -31,7 +31,7 @@ redGreen = [
     ["darkred","green","green","darkred","darkred","green","darkred","darkred"]
 ]
 
-challenge_descriptions = [
+challenge_descriptions= [
     "Hit the box twice as fast as you can. You must use only those 2 weapons for the remainder of the game.",
     "You are not allowed to buy Jugger-nog.",
     "The only perk you are allowed to have is Jugger-nog.",
