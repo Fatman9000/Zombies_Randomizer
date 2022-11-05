@@ -1,4 +1,3 @@
-import time
 import pygame
 import random
 import math
@@ -66,7 +65,7 @@ while True:
         pygame.draw.line(window, (0,0,0),(0,90),(360,90),5)
         pygame.draw.line(window, (0,0,0),(0,494),(360,494),5)
 
-        #Excluding challenges on certain maps  
+        #Excluding challenges on certain maps
         while check is False:
             if challengeNumber == 4 and (mapNumber != 4 or mapNumber != 8):
                 mapNumber = random.randint(0,8)
@@ -87,9 +86,9 @@ while True:
             check = True
 
         # Challenge Descriptions
-        PygameTWF.renderTextWrap((extraInfo.cDescriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
+        PygameTWF.renderTextWrap((extraInfo.challenge_descriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
 
-        #Red and Green Boxes 
+        #Red and Green Boxes
         
         for index, amount in enumerate(extraInfo.redGreen[challengeNumber]):
             pygame.draw.rect(window, (amount), (15,105 + index * 50,25,25))
@@ -109,7 +108,7 @@ while True:
             for x, y in extraInfo.rangesList:
                 if x <= pygame.mouse.get_pos()[1] < y:
                     displayExtraInfo = extraInfo.rangesList.index((x,y))
-            PygameCTBF.cursorTextBox((extraInfo.extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
+            PygameCTBF.cursorTextBox((extraInfo.extra_info_desc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
 
     previous_click = Click[0]
     pygame.display.flip()

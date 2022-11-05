@@ -3,7 +3,7 @@ map_name = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuket
 bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever","Equipment","Non-lethal Buildables","Lethal Buildables"]
 rangesList = [(95,145),(145,195),(195,245),(245,295),(295,345),(345,395),(395,445),(445,495)]
 
-extraInfoDesc = [
+extra_info_desc = [
     "Afterlife is fine if you kill yourself, but not if you die to zombies",
     "You must eventually replace this gun in challenges that require you to use specific guns and have this enabled",
     "This refers to your starting knife",
@@ -31,7 +31,7 @@ redGreen = [
     ["darkred","green","green","darkred","darkred","green","darkred","darkred"]
 ]
 
-cDescriptions = [
+challenge_descriptions = [
     "Hit the box twice as fast as you can. You must use only those 2 weapons for the remainder of the game.",
     "You are not allowed to buy Jugger-nog.",
     "The only perk you are allowed to have is Jugger-nog.",
